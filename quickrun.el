@@ -1472,6 +1472,7 @@ With double prefix argument(C-u C-u), run in compile-only-mode."
   "Run commands in shell for interactive programs."
   (interactive)
   (let ((quickrun--run-in-shell t)
+        (quickrun-focus-p t)
         (quickrun-timeout-seconds nil))
     (quickrun)))
 
@@ -1536,7 +1537,7 @@ With double prefix argument(C-u C-u), run in compile-only-mode."
       (let* ((cmdinfo (quickrun--command-info cmd-key))
              (tempfile-param (assoc :tempfile cmdinfo)))
         (if tempfile-param
-            (cdr tempfile-param)
+            (cadr tempfile-param)
           t)))))
 
 (defsubst quickrun--buffer-popup-p ()
